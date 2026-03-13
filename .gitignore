@@ -8,7 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
+.venv/
 build/
 develop-eggs/
 dist/
@@ -28,13 +28,11 @@ __pycache__/
 
 # Environments
 .env
-.venv
 env/
-venv/
+.venv/
 ENV/
 env.bak/
 venv.bak/
-.env
 
 db.sqlite3
 
