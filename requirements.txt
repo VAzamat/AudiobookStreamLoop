@@ -2,3 +2,5 @@ Django<6.0
 ipython
 pillow
 psycopg2-binary
+crispy-bootstrap5
+django-crispy-forms>=2.3
