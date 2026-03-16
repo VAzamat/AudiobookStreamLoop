@@ -80,3 +80,94 @@ class Contributor(models.Model):
     def __str__(self):
         return self.full_name
 
+
+
+class Book(models.Model):
+    id = models.BigIntegerField(unique=True, verbose_name="ID")
+    book_uuid = models.UUIDField(primary_key=True, editable=False)
+    title = models.CharField(max_length=255, verbose_name="Название книги")
+
+    # Many-to-Many
+    # Связь с участниками через промежуточную таблицу
+    contributors = models.ManyToManyField(
+        'Contributor',
+        through='BookContributor',
+        related_name='books'
+    )
+
+    # One-to-Many (ForeignKey)
+    genres = models.ForeignKey(
+        Genre, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="books", verbose_name="Жанры"
+    )
+
+    publisher = models.ForeignKey(
+        Publisher, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="books", verbose_name="Издатель"
+    )
+    copyrighter = models.ForeignKey(
+        Copyrighter, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="books", verbose_name="Копирайтер"
+    )
+    rightholder = models.ForeignKey(
+        Rightholder, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="books", verbose_name="Правообладатель"
+    )
+
+    # поля из первого JSON
+    subtitle = models.CharField(max_length=255, blank=True, verbose_name="Подзаголовок")
+    cover_url = models.CharField(max_length=255, verbose_name="URL обложки")
+    url = models.CharField(max_length=500, verbose_name="URL книги")
+    is_draft = models.BooleanField(default=False, verbose_name="Черновик")
+    art_type = models.IntegerField(verbose_name="Тип контента")
+    prices = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
+    is_auto_speech_gift = models.BooleanField(default=False, verbose_name="Авто-озвучка в подарок")
+    min_age = models.PositiveIntegerField(verbose_name="Возрастные ограничения")
+    language_code = models.CharField(max_length=10, verbose_name="Код языка")
+    last_updated_at = models.DateTimeField(verbose_name="Дата последнего обновления")
+    last_released_at = models.DateTimeField(verbose_name="Дата последнего релиза")
+    availability = models.BooleanField(default=False, verbose_name="Доступность")
+    available_from = models.DateTimeField(verbose_name="Доступна с")
+
+    rating = models.ForeignKey(Rating, on_delete=models.CASCADE, related_name="books", verbose_name="Рейтинг")
+
+    html_annotation = models.TextField(verbose_name="HTML-аннотация")
+    html_annotation_litres = models.TextField(verbose_name="HTML-аннотация Litres")
+    livelib_rated_count = models.IntegerField(verbose_name="Кол-во оценок LiveLib")
+    livelib_rated_avg = models.FloatField(verbose_name="Средняя оценка LiveLib")
+    isbn = models.CharField(max_length=20, verbose_name="ISBN")
+    publication_date = models.DateField(verbose_name="Дата публикации")
+    contents_url = models.CharField(max_length=255, verbose_name="URL содержания")
+
+    class Meta:
+        verbose_name = "Книга"
+        verbose_name_plural = "Книги"
+
+    def __str__(self):
+        return self.title
+
+
+class BookContributor(models.Model):
+    class Role(models.TextChoices):
+        AUTHOR = 'author', _('Author')
+        EDITOR = 'editor', _('Editor')
+        CORRECTOR = 'corrector', _('Corrector')
+        ILLUSTRATOR = 'illustrator', _('Illustrator')
+        TRANSLATOR = 'translator', _('Translator')
+
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100, choices=Role.choices, verbose_name="Вклад в книгу")
+
+    class Meta:
+        # один и тот же человек не может иметь одинаковую роль в одной книге дважды
+        constraints = [
+            models.UniqueConstraint(
+                fields=['book', 'contributor', 'role'],
+                name='unique_book_contributor_role'
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.contributor.name} - {self.role}"
+
