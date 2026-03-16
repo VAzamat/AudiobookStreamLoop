@@ -49,3 +49,20 @@ class Rightholder(models.Model):
         verbose_name_plural = "Правообладатели"
 
     def __str__(self): return self.name
+
+class Rating(models.Model):
+    user_rating = models.FloatField(null=True, blank=True, verbose_name="Рейтинг книги")
+    rated_1_count = models.IntegerField(default=0, verbose_name="Кол-во оценок '1'")
+    rated_2_count = models.IntegerField(default=0, verbose_name="Кол-во оценок '2'")
+    rated_3_count = models.IntegerField(default=0, verbose_name="Кол-во оценок '3'")
+    rated_4_count = models.IntegerField(default=0, verbose_name="Кол-во оценок '4'")
+    rated_5_count = models.IntegerField(default=0, verbose_name="Кол-во оценок '5'")
+    rated_avg = models.FloatField(verbose_name="Средний рейтинг")
+    rated_total_count = models.IntegerField(verbose_name="Общее кол-во оценок")
+
+    class Meta:
+        verbose_name = "Рейтинг"
+        verbose_name_plural = "Рейтинги"
+
+    def __str__(self):
+        return f"Avg: {self.rated_avg} ({self.rated_total_count} votes)"
