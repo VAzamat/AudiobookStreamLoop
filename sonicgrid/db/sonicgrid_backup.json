@@ -1,0 +1,397 @@
+[
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5028,
+        "fields": {
+            "uuid": "ed160c02-f034-11e5-a511-0cc47a5454c6",
+            "name": "классическая литература",
+            "is_root": false,
+            "url": "/genre/klassicheskaya-literatura-5028/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5104,
+        "fields": {
+            "uuid": "ed167748-f034-11e5-a511-0cc47a5454c6",
+            "name": "детская проза",
+            "is_root": false,
+            "url": "/genre/proza-5104/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5106,
+        "fields": {
+            "uuid": "ed1678fc-f034-11e5-a511-0cc47a5454c6",
+            "name": "сказки",
+            "is_root": false,
+            "url": "/genre/skazki-5106/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5107,
+        "fields": {
+            "uuid": "ed167a17-f034-11e5-a511-0cc47a5454c6",
+            "name": "детские приключения",
+            "is_root": false,
+            "url": "/genre/priklucheniya-5107/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5110,
+        "fields": {
+            "uuid": "ed167caf-f034-11e5-a511-0cc47a5454c6",
+            "name": "детские стихи",
+            "is_root": false,
+            "url": "/genre/stihi-5110/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5199,
+        "fields": {
+            "uuid": "ed172b63-f034-11e5-a511-0cc47a5454c6",
+            "name": "юмористическая проза",
+            "is_root": false,
+            "url": "/genre/umoristicheskaya-proza-5199/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5209,
+        "fields": {
+            "uuid": "ed173a66-f034-11e5-a511-0cc47a5454c6",
+            "name": "историческая литература",
+            "is_root": false,
+            "url": "/genre/istoricheskaya-literatura-5209/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5210,
+        "fields": {
+            "uuid": "ed173b4e-f034-11e5-a511-0cc47a5454c6",
+            "name": "современная русская литература",
+            "is_root": false,
+            "url": "/genre/russkaya-literatura-5210/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5219,
+        "fields": {
+            "uuid": "ed1744cd-f034-11e5-a511-0cc47a5454c6",
+            "name": "зарубежные детективы",
+            "is_root": false,
+            "url": "/genre/zarubezhnye-5219/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5254,
+        "fields": {
+            "uuid": "ed176e9c-f034-11e5-a511-0cc47a5454c6",
+            "name": "детская психология",
+            "is_root": false,
+            "url": "/genre/detskaya-5254/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5257,
+        "fields": {
+            "uuid": "ed177177-f034-11e5-a511-0cc47a5454c6",
+            "name": "возрастная психология",
+            "is_root": false,
+            "url": "/genre/vozrastnaya-psihologiya-5257/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5259,
+        "fields": {
+            "uuid": "ed17732f-f034-11e5-a511-0cc47a5454c6",
+            "name": "современные детективы",
+            "is_root": false,
+            "url": "/genre/sovremennye-5259/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5261,
+        "fields": {
+            "uuid": "ed17766c-f034-11e5-a511-0cc47a5454c6",
+            "name": "классические детективы",
+            "is_root": false,
+            "url": "/genre/klassicheskie-5261/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5267,
+        "fields": {
+            "uuid": "ed177bea-f034-11e5-a511-0cc47a5454c6",
+            "name": "стихи и поэзия",
+            "is_root": false,
+            "url": "/genre/poeziya-5267/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5284,
+        "fields": {
+            "uuid": "ed178dce-f034-11e5-a511-0cc47a5454c6",
+            "name": "воспитание детей",
+            "is_root": false,
+            "url": "/genre/vospitanie-detey-5284/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5297,
+        "fields": {
+            "uuid": "ed17a40a-f034-11e5-a511-0cc47a5454c6",
+            "name": "русская классика",
+            "is_root": false,
+            "url": "/genre/russkaya-5297/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5298,
+        "fields": {
+            "uuid": "ed17a4d8-f034-11e5-a511-0cc47a5454c6",
+            "name": "советская литература",
+            "is_root": false,
+            "url": "/genre/sovetskaya-5298/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5304,
+        "fields": {
+            "uuid": "ed17af4c-f034-11e5-a511-0cc47a5454c6",
+            "name": "литература 20 века",
+            "is_root": false,
+            "url": "/genre/20-vek-5304/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5305,
+        "fields": {
+            "uuid": "ed17b426-f034-11e5-a511-0cc47a5454c6",
+            "name": "литература 19 века",
+            "is_root": false,
+            "url": "/genre/19-vek-5305/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5624,
+        "fields": {
+            "uuid": "ed19881b-f034-11e5-a511-0cc47a5454c6",
+            "name": "семейная психология",
+            "is_root": false,
+            "url": "/genre/semeynaya-psihologiya-5624/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 5640,
+        "fields": {
+            "uuid": "ed199c33-f034-11e5-a511-0cc47a5454c6",
+            "name": "практическая психология",
+            "is_root": false,
+            "url": "/genre/praktika-5640/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 6394,
+        "fields": {
+            "uuid": "ed1b0518-f034-11e5-a511-0cc47a5454c6",
+            "name": "история России",
+            "is_root": false,
+            "url": "/genre/istoriya_rossii-6394/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 6429,
+        "fields": {
+            "uuid": "ed1b1431-f034-11e5-a511-0cc47a5454c6",
+            "name": "общая история",
+            "is_root": false,
+            "url": "/genre/obshchaya_istoriya-6429/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 6496,
+        "fields": {
+            "uuid": "ed1b444e-f034-11e5-a511-0cc47a5454c6",
+            "name": "юмор и сатира",
+            "is_root": false,
+            "url": "/genre/umori_i_satira-6496/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.genre",
+        "pk": 6544,
+        "fields": {
+            "uuid": "ed1b518f-f034-11e5-a511-0cc47a5454c6",
+            "name": "психологическая консультация",
+            "is_root": false,
+            "url": "/genre/konsultatsii_psihoterapiya-6544/",
+            "is_main": true
+        }
+    },
+    {
+        "model": "sonicgrid.publisher",
+        "pk": 33332764,
+        "fields": {
+            "name": "Литрес Классика",
+            "url": "/author/proekt-litres-klassika/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 107589,
+        "fields": {
+            "name": "Азбука",
+            "url": "publisher/azbuka/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 119123,
+        "fields": {
+            "name": "Аудиокнига (АСТ)",
+            "url": "publisher/audiokniga-ast-audio/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 581532,
+        "fields": {
+            "name": "СОЮЗ",
+            "url": "publisher/souz/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 709032,
+        "fields": {
+            "name": "АРДИС",
+            "url": "publisher/ardis-2/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 9339005,
+        "fields": {
+            "name": "ВИМБО",
+            "url": "publisher/vimbo-2/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 9351080,
+        "fields": {
+            "name": "Лекторий «Прямая Речь»",
+            "url": "publisher/lektoriy-pryamaya-rech/"
+        }
+    },
+    {
+        "model": "sonicgrid.copyrighter",
+        "pk": 9356748,
+        "fields": {
+            "name": "Литрес Паблишинг",
+            "url": "publisher/litres-pablishing/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 107589,
+        "fields": {
+            "name": "Азбука",
+            "url": "publisher/azbuka/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 119123,
+        "fields": {
+            "name": "Аудиокнига (АСТ)",
+            "url": "publisher/audiokniga-ast-audio/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 581532,
+        "fields": {
+            "name": "СОЮЗ",
+            "url": "publisher/souz/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 709032,
+        "fields": {
+            "name": "АРДИС",
+            "url": "publisher/ardis-2/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 9339005,
+        "fields": {
+            "name": "ВИМБО",
+            "url": "publisher/vimbo-2/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 9351080,
+        "fields": {
+            "name": "Лекторий «Прямая Речь»",
+            "url": "publisher/lektoriy-pryamaya-rech/"
+        }
+    },
+    {
+        "model": "sonicgrid.rightholder",
+        "pk": 9356748,
+        "fields": {
+            "name": "Литрес Паблишинг",
+            "url": "publisher/litres-pablishing/"
+        }
+    }
+]
