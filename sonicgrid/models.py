@@ -66,3 +66,17 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"Avg: {self.rated_avg} ({self.rated_total_count} votes)"
+
+class Contributor(models.Model):
+    contributor_uuid = models.UUIDField(primary_key=True, editable=False)
+    full_name = models.CharField(max_length=255)
+    full_name_rodit = models.CharField(max_length=255)
+    url = models.URLField(max_length=200, blank=True)
+
+    class Meta:
+        verbose_name = "Автор"
+        verbose_name_plural = "Авторы"
+
+    def __str__(self):
+        return self.full_name
+
