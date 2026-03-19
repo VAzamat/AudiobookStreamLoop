@@ -92,7 +92,7 @@ class Command(BaseCommand):
             print(library_id)
 
             if library_data is not NoneType and library_data is not None:
-                #print(library_data)
+                print(library_data)
                 rating_item = {k: library_data['rating'][k]
                                for k in
                                ['user_rating', 'rated_1_count', 'rated_2_count', 'rated_3_count', 'rated_4_count',
@@ -102,17 +102,11 @@ class Command(BaseCommand):
 
                 publisher = None
                 copyrighter = None
-                rightholderList = []
                 if library_data["publisher"] is not None:
                     if library_data["publisher"]["id"] is not None:
                         publisher, created = Publisher.objects.get_or_create( ** library_data["publisher"] )
                 if library_data["copyrighter"]["id"] is not None:
                     copyrighter, created = Copyrighter.objects.get_or_create( ** library_data["copyrighter"] )
-                if len(library_data["rightholders"])>0:
-                    for rightholder in library_data["rightholders"]:
-                        if rightholder["id"] is not None:
-                            r, created = Rightholder.objects.get_or_create( ** rightholder )
-                            rightholderList.append( r.id )
 
 
 
@@ -149,12 +143,19 @@ class Command(BaseCommand):
                 }
 
                 book, created = Book.objects.get_or_create(**book_item)
-                book.rightholder.set(rightholderList)
-                if len(library_data["genres"])>0:
-                    for genre in library_data["genres"]:
-                        print(genre)
-                        if genre["id"] is not None:
-                            genre['is_root']=False
-                            genre['is_main']=True
-                            Genre.objects.get_or_create( ** genre )
+
+                genres_id=[]
+                for item in library_data['genres']:
+                    genre_item = {k: item[k]
+                                               for k in ['id', 'uuid', 'name', 'url'] }
+                    genre, created = Genre.objects.get_or_create(**genre_item)
+                    genres_id.append( genre.id )
+                book.genres.set( genres_id )
+
+                rightholder_id = []
+                for item in library_data["rightholders"]:
+                    if item["id"] is not None:
+                        rightholder, created = Rightholder.objects.get_or_create( ** item )
+                        rightholder_id.append( rightholder.id )
+                book.rightholder.set(rightholder_id)
 

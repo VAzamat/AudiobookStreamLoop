@@ -96,8 +96,8 @@ class Book(models.Model):
     )
 
     # One-to-Many (ForeignKey)
-    genres = models.ForeignKey(
-        Genre, on_delete=models.SET_NULL, null=True, blank=True,
+    genres = models.ManyToManyField(
+        Genre, null=True, blank=True,
         related_name="books", verbose_name="Жанры"
     )
 
