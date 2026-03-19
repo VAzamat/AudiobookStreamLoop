@@ -1,7 +1,8 @@
 from types import NoneType
 
 from django.core.management import BaseCommand
-from sonicgrid.models import Publisher, Copyrighter, Rightholder, Genre, Rating, Book
+from sonicgrid.models import Publisher, Copyrighter, Rightholder, Genre, Rating
+from sonicgrid.models import Book, Contributor, BookContributor
 
 import os
 import random
@@ -65,6 +66,8 @@ class Command(BaseCommand):
         Copyrighter.objects.all().delete()
         Rightholder.objects.all().delete()
         Book.objects.all().delete()
+        BookContributor.objects.all().delete()
+        Contributor.objects.all().delete()
         Rating.objects.all().delete()
 
     def handle_bulk_create_publisher(self, *args, **options):
@@ -112,7 +115,7 @@ class Command(BaseCommand):
 
                 book_item = {
                     'id': library_data['id'],
-                    'book_uuid': library_data['uuid'],
+                    'uuid': library_data['uuid'],
                     'title': library_data['title'],
                     'subtitle': library_data['subtitle'],
                     'cover_url': library_data['cover_url'],
@@ -158,4 +161,10 @@ class Command(BaseCommand):
                         rightholder, created = Rightholder.objects.get_or_create( ** item )
                         rightholder_id.append( rightholder.id )
                 book.rightholder.set(rightholder_id)
+
+                for person in library_data['persons']:
+                    contributor_data = {k: person[k] for k in ['id', 'uuid', 'full_name', 'full_rodit', 'url']}
+                    contributor, created = Contributor.objects.get_or_create(**contributor_data)
+                    BookContributor.objects.create( book=book, contributor=contributor, role=person['role'] )
+
 

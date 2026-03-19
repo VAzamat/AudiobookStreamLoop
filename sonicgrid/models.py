@@ -68,9 +68,10 @@ class Rating(models.Model):
         return f"Avg: {self.rated_avg} ({self.rated_total_count} votes)"
 
 class Contributor(models.Model):
-    contributor_uuid = models.UUIDField(primary_key=True, editable=False)
+    id = models.BigIntegerField(unique=True, verbose_name="ID",default=0)
+    uuid = models.UUIDField(primary_key=True, editable=False)
     full_name = models.CharField(max_length=255)
-    full_name_rodit = models.CharField(max_length=255)
+    full_rodit = models.CharField(max_length=255)
     url = models.URLField(max_length=200, blank=True)
 
     class Meta:
@@ -84,7 +85,7 @@ class Contributor(models.Model):
 
 class Book(models.Model):
     id = models.BigIntegerField(unique=True, verbose_name="ID")
-    book_uuid = models.UUIDField(primary_key=True, editable=False)
+    uuid = models.UUIDField(primary_key=True, editable=False)
     title = models.CharField(max_length=255, verbose_name="Название книги")
 
     # Many-to-Many
@@ -154,6 +155,8 @@ class BookContributor(models.Model):
         CORRECTOR = 'corrector', _('Corrector')
         ILLUSTRATOR = 'illustrator', _('Illustrator')
         TRANSLATOR = 'translator', _('Translator')
+        PUBLISHER = 'publisher', _('Publisher')
+        READER = 'reader', _('Reader')
 
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE)
