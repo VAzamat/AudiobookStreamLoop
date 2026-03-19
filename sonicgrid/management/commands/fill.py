@@ -1,7 +1,7 @@
 from types import NoneType
 
 from django.core.management import BaseCommand
-from sonicgrid.models import Publisher, Copyrighter, Rightholder, Genre
+from sonicgrid.models import Publisher, Copyrighter, Rightholder, Genre, Rating, Book
 
 import os
 import random
@@ -64,6 +64,8 @@ class Command(BaseCommand):
         Genre.objects.all().delete()
         Copyrighter.objects.all().delete()
         Rightholder.objects.all().delete()
+        Book.objects.all().delete()
+        Rating.objects.all().delete()
 
     def handle_bulk_create_publisher(self, *args, **options):
         """
@@ -88,11 +90,19 @@ class Command(BaseCommand):
             library_id = Dir.split('/')[-1]
             library_data = parse(library_id)
             print(library_id)
+
             if library_data is not NoneType and library_data is not None:
+                #print(library_data)
+                rating_item = {k: library_data['rating'][k]
+                               for k in
+                               ['user_rating', 'rated_1_count', 'rated_2_count', 'rated_3_count', 'rated_4_count',
+                                'rated_5_count', 'rated_avg', 'rated_total_count']}
+
+                rating, created = Rating.objects.get_or_create(**rating_item)
+
                 publisher = None
                 copyrighter = None
-                rightholder = None
-
+                rightholderList = []
                 if library_data["publisher"] is not None:
                     if library_data["publisher"]["id"] is not None:
                         publisher, created = Publisher.objects.get_or_create( ** library_data["publisher"] )
@@ -101,7 +111,45 @@ class Command(BaseCommand):
                 if len(library_data["rightholders"])>0:
                     for rightholder in library_data["rightholders"]:
                         if rightholder["id"] is not None:
-                            Rightholder.objects.get_or_create( ** rightholder )
+                            r, created = Rightholder.objects.get_or_create( ** rightholder )
+                            rightholderList.append( r.id )
+
+
+
+                book_item = {
+                    'id': library_data['id'],
+                    'book_uuid': library_data['uuid'],
+                    'title': library_data['title'],
+                    'subtitle': library_data['subtitle'],
+                    'cover_url': library_data['cover_url'],
+                    'url': library_data['url'],
+                    'is_draft': library_data['is_draft'],
+                    'art_type': library_data['art_type'],
+                    'prices': library_data['prices']['full_price'],
+                    'is_auto_speech_gift': library_data['is_auto_speech_gift'],
+                    'min_age': library_data['min_age'],
+                    'language_code': library_data['language_code'],
+                    'last_updated_at': library_data['last_updated_at'],
+                    'last_released_at': library_data['last_released_at'],
+                    'availability': library_data.get('availability', False),
+                    'available_from': library_data['available_from'],
+                    'html_annotation': library_data['html_annotation'],
+                    'html_annotation_litres': library_data['html_annotation_litres'],
+                    'livelib_rated_count': library_data['livelib_rated_count'],
+                    'livelib_rated_avg': library_data['livelib_rated_avg'],
+                    'isbn': library_data.get('isbn',''),
+                    'publication_date': library_data['publication_date'],
+                    'contents_url': library_data['contents_url'],
+
+                    'rating': rating,
+                    'publisher': publisher,
+                    'copyrighter':copyrighter,
+
+
+                }
+
+                book, created = Book.objects.get_or_create(**book_item)
+                book.rightholder.set(rightholderList)
                 if len(library_data["genres"])>0:
                     for genre in library_data["genres"]:
                         print(genre)

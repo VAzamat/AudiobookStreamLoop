@@ -109,13 +109,13 @@ class Book(models.Model):
         Copyrighter, on_delete=models.SET_NULL, null=True, blank=True,
         related_name="books", verbose_name="Копирайтер"
     )
-    rightholder = models.ForeignKey(
-        Rightholder, on_delete=models.SET_NULL, null=True, blank=True,
+    rightholder = models.ManyToManyField(
+        Rightholder, null=True, blank=True,
         related_name="books", verbose_name="Правообладатель"
     )
 
     # поля из первого JSON
-    subtitle = models.CharField(max_length=255, blank=True, verbose_name="Подзаголовок")
+    subtitle = models.CharField(max_length=255, verbose_name="Подзаголовок", null=True, blank=True)
     cover_url = models.CharField(max_length=255, verbose_name="URL обложки")
     url = models.CharField(max_length=500, verbose_name="URL книги")
     is_draft = models.BooleanField(default=False, verbose_name="Черновик")
@@ -135,9 +135,9 @@ class Book(models.Model):
     html_annotation_litres = models.TextField(verbose_name="HTML-аннотация Litres")
     livelib_rated_count = models.IntegerField(verbose_name="Кол-во оценок LiveLib")
     livelib_rated_avg = models.FloatField(verbose_name="Средняя оценка LiveLib")
-    isbn = models.CharField(max_length=20, verbose_name="ISBN")
+    isbn = models.CharField(max_length=20, verbose_name="ISBN", null=True, blank=True)
     publication_date = models.DateField(verbose_name="Дата публикации")
-    contents_url = models.CharField(max_length=255, verbose_name="URL содержания")
+    contents_url = models.CharField(max_length=255, verbose_name="URL содержания", null=True, blank=True)
 
     class Meta:
         verbose_name = "Книга"
